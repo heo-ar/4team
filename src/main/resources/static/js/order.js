@@ -6,6 +6,8 @@ $(document).ready(function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
+
+    loadCartItems();
     // 주문하기 버튼 클릭 이벤트 리스너
     document.querySelector(".order_btn").addEventListener("click", function () {
         // 체크된 항목들 가져오기
