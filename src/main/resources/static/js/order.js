@@ -1,3 +1,10 @@
+$(document).ready(function () {
+    // 결제 버튼 클릭 이벤트 등록
+    loadCartItems();
+
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
     // 주문하기 버튼 클릭 이벤트 리스너
     document.querySelector(".order_btn").addEventListener("click", function () {
