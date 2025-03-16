@@ -1,10 +1,3 @@
-$(document).ready(function () {
-    // 결제 버튼 클릭 이벤트 등록
-    loadCartItems();
-
-});
-
-
 document.addEventListener("DOMContentLoaded", function () {
 
     loadCartItems();
