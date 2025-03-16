@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.udigo.hotel.member.model.dao.MemberMapper">
+
+    <!--  결제 정보 DTO에 매핑  -->
+    <resultMap id="payResultMap" type="com.udigo.hotel.pay.model.dto.PayDTO">
+        <id property="payId" column="pay_id"/>
+        <result property="memberCode" column="member_code"/>
+        <result property="acmId" column="acm_id"/>
+        <result property="payMethod" column="pay_method"/>
+        <result property="payStatus" column="pay_status"/>
+        <result property="payType" column="pay_type"/>
+        <result property="payDate" column="pay_date"/>
+        <result property="payPrice" column="pay_price"/>
+        <result property="discount" column="discount"/>
+        <result property="payRef" column="pay_ref"/>
+        <result property="transactionId" column="transaction_id"/>
+        <result property="payProvider" column="pay_provider"/>
+    </resultMap>
+
+    <!-- 장바구니에서 숙소 정보 가져오기 -->
+    <select id="getCartItemsByMember" parameterType="string" resultType="map">
+        SELECT c.member_code, a.acm_id, a.acm_name, a.acm_price
+        FROM tbl_cart c
+                 JOIN tbl_acm a ON c.acm_id = a.acm_id
+        WHERE c.member_code = #{memberCode}
+    </select>
+
+    <insert id="insertPaymentRecord" parameterType="map">
+        INSERT INTO tbl_pay (
+            member_code, acm_id, pay_price, pay_method, pay_status, pay_type,
+            pay_date, discount, pay_ref, transaction_id, pay_provider
+        )
+        VALUES (
+                   #{memberCode}, #{acmId}, #{payPrice}, #{payMethod}, #{payStatus}, #{payType},
+                   NOW(), #{discount}, #{payRef}, #{transactionId}, #{payProvider}
+               )
+    </insert>
+
+    <!-- 장바구니에 담긴 숙소 ID 조회 -->
+    <select id="getCartItemsByMember" parameterType="string" resultType="map">
+        SELECT member_code, acm_id
+        FROM tbl_cart
+        WHERE member_code = #{memberCode}
+    </select>
+
+    <!-- 숙소 가격 조회 -->
+    <select id="getAccommodationPrice" parameterType="int" resultType="map">
+        SELECT acm_id, acm_price
+        FROM tbl_acm
+         WHERE acm_id = 101
+        WHERE acm_id = #{acmId}
+    </select>
+
+</mapper>

@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    font-weight: 500;
+}
+h1 {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.post {
+    background-color: #fff;
+    border: 1px solid #c4c4c4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    padding: 15px;
+    position: relative;
+    margin-left: 15px; /* 왼쪽 여백 */
+    margin-right: 15px; /* 오른쪽 여백 */
+}
+
+.post h2 {
+    cursor: pointer;
+    padding-left: 10px;
+    color: #007bff;
+    display: inline-block;
+}
+
+.post p {
+    margin: 5px 0;
+}
+
+.post-content {
+    border-top: 2px solid #000000;
+    margin-top: 10px;
+    padding-top: 10px;
+    display: none;
+}
+
+.toggle-arrow {
+    font-size: 18px;
+    position: absolute;
+    right: 20px;
+    top: 42px;
+    transition: transform 0.3s ease;
+    border-radius: 50%; /* 둥글게 만들기 */
+    background-color: #f0f0f0;
+    padding: 5px;
+    width: 24px; /* 크기 조정 */
+    height: 24px; /* 크기 조정 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 사이드바 반응형 디자인 수정 */
+.sidebar {
+    position: fixed;
+    top: 265px;
+    left: 2%; /* 픽셀 대신 퍼센트 사용 */
+    width: 9%; /* 픽셀 대신 퍼센트 사용 */
+    min-width: 120px; /* 최소 너비 설정 */
+    max-width: 180px; /* 최대 너비 설정 */
+    height: auto; /* 자동 높이 조정 */
+    background-color: #e3e3e3;
+    padding: 20px 0; /* 상하 패딩만 설정 */
+    border-radius: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* 다른 요소 위에 표시 */
+}
+
+.sidebar a {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 1rem; /* 픽셀 대신 rem 사용 */
+    color: #333;
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.sidebar a:last-child {
+    border-bottom: none;
+}
+
+.sidebar a:hover {
+    background-color: #d0d0d0;
+}
+
+.content {
+    margin-left: calc(10% + 40px); /* 사이드바 너비 + 여백 */
+    margin-right: 5%; /* 오른쪽 여백 퍼센트로 설정 */
+    padding: 20px;
+}
+
+/* 반응형 미디어 쿼리 추가 */
+@media (max-width: 768px) {
+    .sidebar {
+        position: static; /* 모바일에서는 고정 위치 해제 */
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .content {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .sidebar a {
+        display: inline-block;
+        width: 33.33%;
+        border-bottom: none;
+        border-right: 1px solid #ccc;
+    }
+
+    .sidebar a:last-child {
+        border-right: none;
+    }
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.pagination a:hover {
+    text-decoration: underline;
+}
