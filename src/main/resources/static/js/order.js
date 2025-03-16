@@ -48,10 +48,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function loadCartItems() {
+    console.log('test');
     fetch("/payment/cart", {
         method: "POST", // GET: 보안 X / URL blogPost&page=3 / GET 방식은 속도가 빨라, POST: 암호화돼서 넘어가 / 보안 good~! / 조금 더 느림
         headers: { "Content-Type": "application/json" }, // Content-Type: ajax 요청 보낼 때 이 데이터가 무슨 값인지 백엔드(JAVA) 알려주는 용도 - 파일 형태가 json이라고 알려주는 거
-        body: "", // 넘겨질 데이터
+        body: JSON.stringify({}), // 넘겨질 데이터
     }).then(response => response.json())
         .then(data => {
             if (data.success) {
