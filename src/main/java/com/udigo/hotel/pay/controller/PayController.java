@@ -18,7 +18,7 @@ public class PayController {
     @Autowired
     private PayService payService;
 
-    @PostMapping
+    @PostMapping("/cart")
     public ResponseEntity<Map<String, Object>> getCartItemsByMember() {
         try {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
